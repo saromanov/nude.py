@@ -10,6 +10,7 @@ import sys
 import time
 from collections import namedtuple
 from PIL import Image
+from colorama import Fore, Back, Style
 
 
 def is_nude(path_or_io):
@@ -147,6 +148,14 @@ class Nude(object):
             self.image.filename, self.image.format, self.width, self.height)
         return "#<{_nude_class}({_image}): result={_result} message='{_message}'>".format(
             _nude_class=_nude_class, _image=_image, _result=self.result, _message=self.message)
+
+    def show(self):
+        color = Fore.GREEN if self.result else Fore.RED
+        print(color + "Result: " + self.message + Fore.RESET)
+        print(Fore.YELLOW + "Format: ", self.image.format + Fore.RESET)
+        print(Fore.YELLOW + "Filename: ", self.image.filename + Fore.RESET)
+        print(Fore.YELLOW + "Width: ", str(self.width) + Fore.RESET)
+        print(Fore.YELLOW + "Height: ", str(self.height) + Fore.RESET)
 
     def _add_merge(self, _from, _to):
         self.last_from = _from

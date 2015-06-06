@@ -23,6 +23,6 @@ setup(name='nudepy',
           'Programming Language :: Python :: 3'],
       keywords="nude",
       zip_safe=False,
-      install_requires=['pillow'],
+      install_requires=['pillow', 'colorama'],
       entry_points={'console_scripts': ['nudepy = nude:main']},
       )
